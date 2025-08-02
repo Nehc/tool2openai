@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="tools2openai",
-    version="0.1.0",
+    version="0.1.1",
     author="Nehcy",
     author_email="cibershaman@пmail.com",
     description="набор простеньких инструментов для собственного openai-совместимого эндпоинта.",
@@ -26,9 +26,9 @@ setup(
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
     ],
-    python_requires=">=3.7",
+    python_requires=">=3.10",
     install_requires=[
-        "openai>=1.98.pypirc.0"
+        "openai>=1.98.0"
     ],
     extras_require={
         "dev": [

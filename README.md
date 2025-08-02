@@ -18,7 +18,7 @@ pip install tools2openai
 ## Использование
 
 ```python 
-from openai_tools import OpenAIClient
+from tools2openai import OpenAIClient
 
 my_client = OpenAIClient(api_key="<my_api>", base_url="http://server:5000/v1/")
 ```
