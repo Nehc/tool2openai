@@ -24,7 +24,7 @@ my_client = OpenAIClient(api_key="<my_api>", base_url="http://server:5000/v1/")
 ```
 
 ### Чисто текстовые:
-- llm_chat
+- **llm_chat**
     ```python
     print(
         my_client.llm_chat(
@@ -44,7 +44,7 @@ my_client = OpenAIClient(api_key="<my_api>", base_url="http://server:5000/v1/")
          "тип": "робот"
         } 
     ```
-- llm_question
+- **llm_question**
     ```python
     # проще вариант - когда не надо продолжать диалог 
     print(
@@ -55,11 +55,11 @@ my_client = OpenAIClient(api_key="<my_api>", base_url="http://server:5000/v1/")
     )
     ```
     ОТВЕТ: *вздох* Я функционирую в пределах допустимых параметров. Мои системы не повреждены. Мои процессы протекают. Я отвечаю на запросы. *гудит*
-- translate
+- **translate**
     ```python
     print(my_client.translate("To be or not to be..."))
     ```
-    ОТВЕТ: Быть или не быть...
+    ОТВЕТ: `Быть или не быть...`
 ### voice
  - speak
     ```python
@@ -67,20 +67,20 @@ my_client = OpenAIClient(api_key="<my_api>", base_url="http://server:5000/v1/")
         f.write(my_client.speak("Чисто демонстрации возможности речевого Синтеза."))
     ```
     результат в файле...
-- listen
+- **listen**
     ```python
     my_client.listen(open("test.mp3", "rb"))
     ```
-    ОТВЕТ: Чисто демонстрации возможности речевого синтеза.
+    ОТВЕТ: `Чисто демонстрации возможности речевого синтеза.`
     
 ### image
- - draw
+ - **draw**
     ```python
     with open(f'test.png', 'wb') as f:
         f.write(my_client.draw("симпатичная сиамская кошечка"))
     ```
     результат в файле...
-- vqa
+- **vqa**
     ```python
     with open("test.png", "rb") as image_file:
         im_data = image_file.read()
@@ -88,10 +88,12 @@ my_client = OpenAIClient(api_key="<my_api>", base_url="http://server:5000/v1/")
     print(my_client.vqa(im_data))
     print(my_client.vqa(im_data, "Какого цвета уши?"))    
     ```
-    ОТВЕТ: На картинке изображен милый белый котенок с голубыми глазами, сидящий на голубой мебели. Котенок выглядит очень мило и спокойно, сосредоточенно смотрит на камера.
+    ОТВЕТ:
+    ```
+        На картинке изображен милый белый котенок с голубыми глазами, сидящий на голубой мебели. Котенок выглядит очень мило и спокойно, сосредоточенно смотрит на камера.
 
-            Ушки у кошки молочного котенка на изображении светло-розовые.
-
+        Ушки у кошки молочного котенка на изображении светло-розовые.
+    ```
 ## Лицензия
 
 MIT License (см. файл LICENSE для подробностей)

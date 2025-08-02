@@ -12,7 +12,7 @@ setup(
     description="набор простеньких инструментов для собственного openai-совместимого эндпоинта.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/nehcy/tool2openai",  # Замените на реальный URL
+    url="https://github.com/nehc/tool2openai",  # Замените на реальный URL
     packages=find_packages(where="src"),
     package_dir={"": "src"},
     classifiers=[
@@ -28,7 +28,7 @@ setup(
     ],
     python_requires=">=3.7",
     install_requires=[
-        "openai>=1.98.0"
+        "openai>=1.98.pypirc.0"
     ],
     extras_require={
         "dev": [
