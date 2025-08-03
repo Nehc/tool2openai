@@ -10,6 +10,7 @@ class Config:
     - default_llm (str, optional): Модель для использования в чатe. По умолчанию "llama4:maverick".
     - translate_llm (str, optional): Модель для перевода текста. По умолчанию "qwen2.5vl:latest".
     - vqa_llm (str, optional): Модель для ответа на вопросы по изображениям. По умолчанию "qwen2.5vl:latest".
+    - draw_llm (str, optional): Модель для формирования промпта в SD. 
     - trl_prompt_template (str, optional): Шаблон для запроса перевода. По умолчанию "Переведи этот текст на {} язык: ".
     - vqa_prompt (str, optional): Prompt для запроса ответа на вопрос по изображению. По умолчанию "Что нарисовано на картинке?".
     - draw_prompt (str, optional): Prompt для генерации картинки. По умолчанию: "на основе сообщения пользователя сформулирую prompt для stable diffusion на английском."
@@ -21,6 +22,7 @@ class Config:
         default_llm: str = "llama4:maverick",
         translate_llm: str = "qwen2.5vl:latest",
         vqa_llm: str = "qwen2.5vl:latest",
+        draw_llm: str = "qwen2.5vl:latest",
         trl_prompt_template: str = "Переведи этот текст на {} язык: ",
         vqa_prompt: str = "Что нарисовано на картинке?",
         draw_prompt: str = "на основе сообщения пользователя сформулирую prompt для stable diffusion на английском.",
@@ -28,6 +30,7 @@ class Config:
         self.default_llm = default_llm
         self.translate_llm = translate_llm
         self.vqa_llm = vqa_llm
+        self.draw_llm = draw_llm
         self.trl_prompt_template = trl_prompt_template
         self.vqa_prompt = vqa_prompt
         self.draw_prompt = draw_prompt
@@ -189,7 +192,7 @@ class OpenAIClient:
         prompt = (
             describe
             if no_translate
-            else self.llm_question(describe, sys_message=self.config.draw_prompt)
+            else self.llm_question(describe, sys_message=self.config.draw_prompt, model=self.config.draw_llm)
         )
         response = self.client.images.generate(
             model="dall-e-1",
