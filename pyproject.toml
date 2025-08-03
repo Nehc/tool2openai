@@ -1,6 +1,6 @@
 [project]
 name = "tool2openai"
-version = "0.1.3"
+version = "0.1.5"
 description = "Набор простеньких инструментов для собственного openai-совместимого эндпоинта."
 readme = "README.md"
 license = "MIT"

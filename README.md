@@ -1,4 +1,4 @@
-# tools2openai
+# tool2openai
 
 Набор простеньких инструментов для собственного openai-совместимого эндпоинта.
 
@@ -12,13 +12,13 @@
 ## Установка
 
 ```bash
-pip install tools2openai
+pip install tool2openai
 ```
 
 ## Использование
 
 ```python 
-from tools2openai import OpenAIClient
+from tool2openai import OpenAIClient
 
 my_client = OpenAIClient(api_key="<my_api>", base_url="http://server:5000/v1/")
 ```

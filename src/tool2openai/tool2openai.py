@@ -25,7 +25,7 @@ class Config:
         draw_llm: str = "qwen2.5vl:latest",
         trl_prompt_template: str = "Переведи этот текст на {} язык: ",
         vqa_prompt: str = "Что нарисовано на картинке?",
-        draw_prompt: str = "на основе сообщения пользователя сформулирую prompt для stable diffusion на английском.",
+        draw_prompt: str = "на основе сообщения пользователя, сформулируй prompt для stable diffusion на английском.",
     ):
         self.default_llm = default_llm
         self.translate_llm = translate_llm
@@ -42,6 +42,19 @@ class Config:
                 "numGpu": 0,
             },
         }
+
+    def __repr__(self):
+        return (
+            "Config(\n"
+            f"    default_llm   = '{self.default_llm}',\n"
+            f"    translate_llm = '{self.translate_llm}',\n"
+            f"    vqa_llm       = '{self.vqa_llm}',\n"
+            f"    draw_llm      = '{self.draw_llm}',\n"
+            f"    trl_prompt    = '{self.trl_prompt_template}',\n"
+            f"    vqa_prompt    = '{self.vqa_prompt}',\n"
+            f"    draw_prompt   = '{self.draw_prompt}'\n"
+            ")"
+        )
 
 # единая точка входа на все сервисы
 class OpenAIClient:
