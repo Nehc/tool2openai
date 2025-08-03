@@ -11,9 +11,9 @@ class Config:
     - translate_llm (str, optional): Модель для перевода текста. По умолчанию "qwen2.5vl:latest".
     - vqa_llm (str, optional): Модель для ответа на вопросы по изображениям. По умолчанию "qwen2.5vl:latest".
     - draw_llm (str, optional): Модель для формирования промпта в SD. 
-    - trl_prompt_template (str, optional): Шаблон для запроса перевода. По умолчанию "Переведи этот текст на {} язык: ".
+    - trl_prompt (str, optional): Шаблон для запроса перевода. По умолчанию "Переведи этот текст на {} язык: ".
     - vqa_prompt (str, optional): Prompt для запроса ответа на вопрос по изображению. По умолчанию "Что нарисовано на картинке?".
-    - draw_prompt (str, optional): Prompt для генерации картинки. По умолчанию: "на основе сообщения пользователя сформулирую prompt для stable diffusion на английском."
+    - draw_prompt (str, optional): Prompt для генерации картинки. По умолчанию: "на основе сообщения пользователя, сформулируй prompt для stable diffusion на английском."
     - model_options (dict): Опции для различных моделей.
     """
 
@@ -23,7 +23,7 @@ class Config:
         translate_llm: str = "qwen2.5vl:latest",
         vqa_llm: str = "qwen2.5vl:latest",
         draw_llm: str = "qwen2.5vl:latest",
-        trl_prompt_template: str = "Переведи этот текст на {} язык: ",
+        trl_prompt: str = "Переведи этот текст на {} язык: ",
         vqa_prompt: str = "Что нарисовано на картинке?",
         draw_prompt: str = "на основе сообщения пользователя, сформулируй prompt для stable diffusion на английском.",
     ):
@@ -31,7 +31,7 @@ class Config:
         self.translate_llm = translate_llm
         self.vqa_llm = vqa_llm
         self.draw_llm = draw_llm
-        self.trl_prompt_template = trl_prompt_template
+        self.trl_prompt = trl_prompt
         self.vqa_prompt = vqa_prompt
         self.draw_prompt = draw_prompt
         self.model_options = {
@@ -50,7 +50,7 @@ class Config:
             f"    translate_llm = '{self.translate_llm}',\n"
             f"    vqa_llm       = '{self.vqa_llm}',\n"
             f"    draw_llm      = '{self.draw_llm}',\n"
-            f"    trl_prompt    = '{self.trl_prompt_template}',\n"
+            f"    trl_prompt    = '{self.trl_prompt}',\n"
             f"    vqa_prompt    = '{self.vqa_prompt}',\n"
             f"    draw_prompt   = '{self.draw_prompt}'\n"
             ")"
@@ -141,7 +141,7 @@ class OpenAIClient:
             messages=[
                 {
                     "role": "user",
-                    "content": self.config.trl_prompt_template.format(lang) + text,
+                    "content": self.config.trl_prompt.format(lang) + text,
                 }
             ],
         )

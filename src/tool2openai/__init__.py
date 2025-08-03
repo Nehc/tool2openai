@@ -8,7 +8,7 @@ from .tool2openai import (
     Config,
 )
 
-__version__ = "0.1.5"
+__version__ = "0.1.6"
 __author__ = "Nehcy"
 
 # Опционально: определяем, что будет доступно при импорте *

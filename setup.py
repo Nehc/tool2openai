@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="tool2openai",
-    version="0.1.5",
+    version="0.1.6",
     author="Nehcy",
     author_email="cibershaman@пmail.com",
     description="набор простеньких инструментов для собственного openai-совместимого эндпоинта.",
